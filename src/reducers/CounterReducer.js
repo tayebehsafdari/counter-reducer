@@ -1,6 +1,9 @@
-import init from "./init";
+function init(initialCount) {
+    return {count: initialCount};
+}
 
-function CounterReducer(state, action) {
+function counterReducer(state, action) {
+    console.log(state, action);
     switch (action.type) {
         case 'increment':
             return {count: state.count + 1};
@@ -8,10 +11,11 @@ function CounterReducer(state, action) {
             return {count: state.count - 1};
         case 'reset':
             return init(action.payload);
+        case 'onChange':
+            return {count: action.payload};
         default:
             throw new Error();
-
     }
 }
 
-export default CounterReducer;
+export default counterReducer;
